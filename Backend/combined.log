@@ -1,0 +1,12 @@
+{"level":"warn","message":"warning informattion","service":"user-service"}
+{"level":"info","message":"info informattion","service":"user-service"}
+{"level":"warn","message":"warning informattion"}
+{"level":"info","message":"info informattion"}
+{"level":"warn","message":"warning informattion"}
+{"level":"info","message":"info informattion"}
+{"level":"warn","message":"warning informattion"}
+{"level":"info","message":"info informattion"}
+{"level":"debug","message":"debug informattion"}
+{"level":"warn","message":"warning informattion"}
+{"level":"info","message":"info informattion"}
+{"level":"debug","message":"debug informattion"}
