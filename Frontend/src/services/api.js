@@ -2,24 +2,21 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api.snapshow.com';
 
-const fetchImages = async () => {
+// Function to fetch images from the API
+const fetchImages = async (page) => {
+  console.log("Pagesss :",page.pageParam);
+  const limit = 9;
+  const offset = (page - 1) * limit;
+  const url = `${BASE_URL}/images?page=${page.pageParam}&limit=${limit}`;
+
   try {
-    const response = await axios.get(`${BASE_URL}/images`, { timeout: 5000 }); // Timeout set to 5 seconds
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      console.error('Server responded with error status:', error.response.status);
-      console.error('Error message:', error.response.data);
-    } else if (error.request) {
-      // The request was made but no response was received
-      console.error('No response received from server');
-    } else {
-      // Something happened in setting up the request that triggered an error
-      console.error('Error:', error.message);
-    }
+    console.error('Error fetching images:', error);
     throw new Error('Failed to fetch images');
   }
 };
+
 
 export { fetchImages };
