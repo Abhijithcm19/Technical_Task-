@@ -14,7 +14,6 @@ const getPictures = asyncHandler(async (req, res) => {
   // Extract pictures based on pagination parameters
   const pictures = response.data.slice(offset, offset + limit);
 
-  // Transform pictures data
   const transformedPictures = pictures.map((picture) => ({
     id: picture.id,
     author: picture.author,
@@ -31,6 +30,12 @@ const saveImage = asyncHandler(async (req, res) => {
   try {
     const { id, author, dimensions, url } = req.body;
 
+    const existingImage = await imageModel.findOne({ url });
+
+    if (existingImage) {
+      return res.status(400).json({ error: 'Image already exists' });
+    }
+
     const savedImage = await imageModel.create({
       id,
       author,
@@ -44,6 +49,7 @@ const saveImage = asyncHandler(async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 //@ Description: Get saved images from MongoDB
 //@ Route: GET /api.snapshow.com/images/saved

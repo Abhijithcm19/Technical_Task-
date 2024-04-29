@@ -12,29 +12,27 @@ const fetchImages = async (page) => {
 
   try {
     const response = await axios.get(url);
-    return response.data; 
+    return response.data;
   } catch (error) {
     console.error("Error fetching images:", error);
     throw new Error("Failed to fetch images");
   }
 };
 
-// Function to save an image to the API and local storage
+// Function to save an image
 const saveImage = async (imageData) => {
   try {
-    
     const response = await axios.post(`${BASE_URL}/images/save`, imageData);
     const savedImage = response.data;
 
-    
-    let savedImages = JSON.parse(localStorage.getItem('savedImages')) || [];
+    let savedImages = JSON.parse(localStorage.getItem("savedImages")) || [];
     savedImages.push(savedImage);
-    localStorage.setItem('savedImages', JSON.stringify(savedImages));
+    localStorage.setItem("savedImages", JSON.stringify(savedImages));
 
-    return savedImage; 
+    return savedImage;
   } catch (error) {
-    console.error('Error saving image:', error);
-    throw new Error('Failed to save image');
+    console.error("Error saving image:", error);
+    throw new Error("Failed to save image");
   }
 };
 
@@ -42,10 +40,10 @@ const saveImage = async (imageData) => {
 const getSavedImages = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/images/saved`);
-    return response.data; 
+    return response.data;
   } catch (error) {
-    console.error('Error fetching saved images:', error);
-    throw new Error('Failed to fetch saved images');
+    console.error("Error fetching saved images:", error);
+    throw new Error("Failed to fetch saved images");
   }
 };
 

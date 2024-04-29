@@ -1,5 +1,5 @@
 const logger = require("../utils/logger");
-const {constants} = require("../constants")
+const {constants} = require("./constants")
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
   switch (statusCode) {
@@ -44,10 +44,3 @@ const errorHandler = (err, req, res, next) => {
 
 module.exports = errorHandler;
 
-
-// function errorHandler(err, req, res, next) {
-//   logger.error(err.stack);
-//   res.status(500).json({ error: "Internal Server Error" });
-// }
-
-// module.exports = errorHandler;
