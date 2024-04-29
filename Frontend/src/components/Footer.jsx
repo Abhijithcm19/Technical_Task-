@@ -27,7 +27,7 @@ const FooterCom = () => {
               <ul className="mt-2">
                 <li>
                   <a
-                    href="https://www.100jsprojects.com"
+                    href="#"
                     className="text-white hover:text-gray-300"
                     target="_blank"
                     rel="noopener noreferrer"

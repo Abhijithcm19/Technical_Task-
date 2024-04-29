@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
 import Logo from "../assets/camera-svgrepo-com.svg";
+import { AiOutlineHome, AiOutlineSave } from "react-icons/ai";
 
 const Header = () => {
   return (
@@ -15,13 +15,19 @@ const Header = () => {
 
         <ul className="flex gap-6">
           <li>
-            <Link to="/" className="text-white hover:text-gray-300">
-              Home
+            <Link
+              to="/"
+              className="text-white flex items-center hover:text-gray-300"
+            >
+              <AiOutlineHome className="mr-1" /> Home
             </Link>
           </li>
           <li>
-            <Link to="/about" className="text-white hover:text-gray-300">
-              About
+            <Link
+              to="/saved-images"
+              className="text-white flex items-center hover:text-gray-300"
+            >
+              <AiOutlineSave className="mr-1" /> Saved
             </Link>
           </li>
           {/* //darkmod */}

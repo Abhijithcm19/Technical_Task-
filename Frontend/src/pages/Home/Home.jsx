@@ -1,9 +1,10 @@
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchImages } from "../../services/api";
-import ImageCard from "../../components/ImageCard";
+import ImageCard from "../../components/Cards/ImageCard";
 import { useEffect } from "react";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/spinner/LoadingSpinner";
+import InfinitySpinner from "../../components/spinner/InfinitySpinner";
 
 const Home = () => {
   const { ref, inView } = useInView();
@@ -37,18 +38,26 @@ const Home = () => {
 
   return (
     <div className="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen">
-      <div className="flex flex-col items-center gap-6 p-28 px-3 max-w-6xl mx-auto ">
+      <div className="flex flex-col items-center gap-6 p-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold lg:text-6xl">Welcome To Snap Show</h1>
         <p className="text-gray-500 text-xs sm:text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod
-          velit vitae sem lacinia, nec eleifend velit congue. Mauris convallis
-          ex nec libero sollicitudin, vel rutrum metus faucibus.
+          velit vitae sem lacinia, nec eleifend. Mauris convallis ex nec libero
+          sollicitudin, vel rutrum metus faucibus.
         </p>
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+          Learn More
+        </button>
       </div>
-      
+      {/* Loading spinner */}
+
       {/* Image Card section start */}
+      {isLoading && (
+        <div className="mx-[48%]">
+          <LoadingSpinner />
+        </div>
+      )}
       <div className="grid grid-cols-3 gap-4 p-4">
-        {isLoading && <LoadingSpinner />}
         {isError && <p>Error fetching images</p>}
         {data &&
           data.pages &&
@@ -60,7 +69,12 @@ const Home = () => {
       </div>
       {/* Image Card section end */}
 
-      {isFetchingNextPage && <h3>Loading</h3>}
+      {/* Infinity spinner */}
+      {isFetchingNextPage && (
+        <div className="mx-[48%]">
+          <InfinitySpinner />
+        </div>
+      )}
     </div>
   );
 };
