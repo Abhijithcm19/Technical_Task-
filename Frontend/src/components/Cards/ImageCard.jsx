@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaSave } from "react-icons/fa";
+import { FaRegBookmark } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import { saveImage } from "../../services/api";
 import Swal from "sweetalert2";
@@ -75,14 +75,14 @@ const ImageCard = ({ image, innerRef }) => {
           className="w-full h-full object-cover rounded-lg"
         />
       </div>
-      <div className="p-4">
+      <div className="p-4 flex flex-col items-center">
         <h3 className="text-xl font-semibold">{image.title}</h3>
         <p className="text-gray-600">{image.description}</p>
         <button
           onClick={handleSaveClick}
-          className="flex items-center mt-2 text-gray-600 hover:text-gray-800"
+          className="flex items-center mt-2 text-gray-600 hover:text-gray-800 hover:underline"
         >
-          <FaSave className="mr-1" /> Save
+          <FaRegBookmark className="mr-1" /> Save
         </button>
       </div>
     </div>
